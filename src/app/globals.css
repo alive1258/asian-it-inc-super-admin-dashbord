@@ -1,0 +1,97 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Color variable declarer  */
+@layer base {
+  :root {
+    --color-primary-base: #1e1f25;
+    /* --color-primary-base: #0b1739; */
+    --color-primary-muted: #e7e8e8;
+    --color-secondary-base: #929394;
+    --color-info-base: #3383f9;
+    --color-blue-base: #0064f7;
+    --color-info-muted: #b5d1f4;
+    --color-warning-base: #e4a11b;
+    --color-danger-base: #ce3426;
+    --color-success-base: #157f40;
+    --color-neutral-base: #444444;
+    --color-neutral-muted: #767676;
+    --color-black-base: #131517;
+    --color-black-solid: #000000;
+    --color-black-muted: #151819;
+  }
+}
+
+@layer base {
+  .paginateItem {
+    @apply px-4 py-2 bg-[#212327] border border-[#4B4C51] rounded-lg w-9 h-10 flex items-center justify-center text-white cursor-pointer;
+  }
+  .btn {
+    /* @apply px-4 py-2 bg-gradient-to-r from-[#c2e936] to-[#06D001]  rounded-md flex items-center justify-center text-white cursor-pointer; */
+    @apply px-4 py-2 bg-gradient-to-r from-violet-600  to-[#e4365e]   rounded-md flex items-center justify-center text-white cursor-pointer;
+    /* @apply px-4 py-2 bg-gradient-to-r from-pink-600 to-purple-500  rounded-md flex items-center justify-center text-white cursor-pointer; */
+  }
+}
+
+.react-datepicker-wrapper {
+  width: 100% !important;
+}
+
+.ReactCollapse--collapse {
+  transition: height 800ms;
+}
+
+/* sidebarScroll  */
+.sidebarScroll::-webkit-scrollbar {
+  width: 6px;
+}
+.sidebarScroll::-webkit-scrollbar-track {
+  background: #000;
+}
+.sidebarScroll::-webkit-scrollbar-thumb {
+  background-color: #1557b9;
+  border-radius: 10px;
+}
+
+/* css base animation  */
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes slideIn {
+  0% {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.5s ease-in-out forwards;
+}
+
+.animate-slideIn {
+  animation: slideIn 0.5s ease-in-out forwards;
+}
+
+.delay-100 {
+  animation-delay: 0.1s;
+}
+
+.delay-200 {
+  animation-delay: 0.2s;
+}
+
+.delay-300 {
+  animation-delay: 0.3s;
+}
