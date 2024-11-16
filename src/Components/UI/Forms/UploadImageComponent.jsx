@@ -8,7 +8,14 @@ import { AiOutlineLoading3Quarters } from "react-icons/ai";
 import { uploadImage } from "@/helpers/uploadImage/uploadImage";
 import { showErrorAlert } from "@/Components/notification/Notification";
 
-export default function UploadImageComponent({ width, setPhotoURL, photURL,require,label }) {
+export default function UploadImageComponent({
+  width,
+  setPhotoURL,
+  photURL,
+  require,
+  label,
+  height,
+}) {
   const [loading, setLoading] = useState(false);
   const [image, setImage] = useState(null);
   const [imageSize, setImageSize] = useState(null);
@@ -74,7 +81,11 @@ export default function UploadImageComponent({ width, setPhotoURL, photURL,requi
           *
         </abbr>
       </label>
-      <div className={`border-[2px]   mt-2 border-dashed border-info-base bg-[#131517] w-full max-w-full flex items-center justify-center h-96`}>
+      <div
+        className={`border-[2px]   mt-2 border-dashed border-info-base bg-[#131517] w-full max-w-full flex items-center justify-center ${
+          height ? height : "h-96 "
+        } `}
+      >
         {image ? (
           <Image // Use standard HTML img to display the uploaded image
             width={1000}
@@ -85,7 +96,11 @@ export default function UploadImageComponent({ width, setPhotoURL, photURL,requi
           />
         ) : (
           <label className="cursor-pointer flex flex-col items-center justify-center text-blue">
-            <GrCloudUpload className="text-2xl md:text-4xl xl:text-[80px]" />
+            <GrCloudUpload
+              className={`text-2xl md:text-4xl ${
+                width ? "xl:text-4xl" : "xl:text-[80px]"
+              } `}
+            />
             <span className="text-white">Upload Image</span>
             <input
               type="file"
@@ -107,7 +122,9 @@ export default function UploadImageComponent({ width, setPhotoURL, photURL,requi
             <div
               onClick={handleSavePhoto}
               className={`${
-                photURL ? "bg-info-base dark:text-white  cursor-none " : " bg-[#131517]"
+                photURL
+                  ? "bg-info-base dark:text-white  cursor-none "
+                  : " bg-[#131517]"
               } text-black cursor-pointer p-2 rounded`}
             >
               {loading ? (
@@ -122,7 +139,9 @@ export default function UploadImageComponent({ width, setPhotoURL, photURL,requi
             </div>
             <div
               onClick={handleDeletePhoto}
-              className={" bg-[#131517] text-red cursor-pointer p-[10px] rounded"}
+              className={
+                " bg-[#131517] text-red cursor-pointer p-[10px] rounded"
+              }
             >
               <MdDelete className=" text-danger-base"></MdDelete>
             </div>

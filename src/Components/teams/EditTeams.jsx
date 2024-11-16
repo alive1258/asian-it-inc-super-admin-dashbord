@@ -6,7 +6,6 @@ import { useForm } from "react-hook-form";
 import { MdKeyboardArrowRight } from "react-icons/md";
 import { toast } from "react-toastify";
 import Input from "../UI/Forms/Input";
-import Textarea from "../UI/Forms/Textarea";
 import { showErrorAlert, showSuccessAlert } from "../notification/Notification";
 import UpdateImageComponent from "../UI/Forms/UpdateImageComponent";
 import {
@@ -40,7 +39,7 @@ const EditTeams = ({ id }) => {
         reset();
         router.back();
         setPhoto("");
-        showSuccessAlert("success", "teams why trust us successfully!");
+        showSuccessAlert("success", "teams update successfully!");
       } else {
         toast.error(res.message, { position: toast.TOP_RIGHT });
       }
@@ -70,7 +69,7 @@ const EditTeams = ({ id }) => {
             <span className="text-secondary-base font-medium">Home</span>
           </Link>
           <MdKeyboardArrowRight />
-          <span>Add why trust us</span>
+          <span>Add Teams</span>
         </div>
 
         <div className="bg-primary-base rounded-lg">
@@ -97,6 +96,7 @@ const EditTeams = ({ id }) => {
 
               <div>
                 <UpdateImageComponent
+                  width={"w-[250px]" }
                   label={"Team Photo"}
                   require={true}
                   setPhotoURL={setPhoto}

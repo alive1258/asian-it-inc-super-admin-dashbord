@@ -1,10 +1,11 @@
-import EditTeams from '@/Components/teams/EditTeams'
+import AllIndustries from '@/Components/industries/AllIndustries'
 import React from 'react'
 
 const page = () => {
   return (
     <>
-      <EditTeams/>
+    <AllIndustries/>
+      
     </>
   )
 }

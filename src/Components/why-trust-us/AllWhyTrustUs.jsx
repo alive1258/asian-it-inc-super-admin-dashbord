@@ -120,7 +120,7 @@ const AllWhyTrustUs = () => {
                 {data?.data?.data?.length > 0 ? (
                   data?.data?.data?.map((item, index) => (
                     <tr
-                      key={item._id}
+                      key={item?.id}
                       className={`${
                         (index + 1) % 2 === 0
                           ? "text-[#ECECEC]"

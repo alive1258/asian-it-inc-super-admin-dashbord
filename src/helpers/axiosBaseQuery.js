@@ -32,15 +32,25 @@ export const axiosBaseQuery =
 
       return { data: result.data };
     } catch (axiosError) {
-      console.log("axiosError", axiosError);
-      const err = axiosError;
-      // Return error response
+      // console.log("axiosError", axiosError);
+      // const err = axiosError;
+      // // Return error response
+      // return {
+      //   error: {
+      //     // Extract status code from error response
+      //     status: err.statusCode,
+      //     // Extract error data from error response or use error message
+      //     message: err.message,
+      //   },
+      // };
+
+      const { response } = axiosError;
       return {
         error: {
-          // Extract status code from error response
-          status: err.statusCode,
-          // Extract error data from error response or use error message
-          data: err.message,
+          // Use status code from response or default to 500
+          status: response?.status || 500,
+          // Use response data or fallback to generic error message
+          message: response?.data?.message || "An unexpected error occurred",
         },
       };
     }

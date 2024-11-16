@@ -114,7 +114,7 @@ const AllVariantPrices = () => {
               {filteredData?.length > 0 ? (
                 filteredData.map((item, index) => (
                   <tr
-                    key={item._id}
+                    key={item?.id}
                     className={`${
                       (index + 1) % 2 === 0
                         ? "text-[#ECECEC]"

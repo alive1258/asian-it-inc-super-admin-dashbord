@@ -6,6 +6,12 @@ export const tagTypes = {
   user: "user",
   brand: "brand",
   team: "team",
+  our_work: "our-works",
+  technology: "technology",
+  capabilities: "capabilities",
+  industries: "industries",
+  our_product_price: "our_product_price",
+  faq_category: "faq_category",
 };
 
 export const tagTypesList = [
@@ -16,4 +22,10 @@ export const tagTypesList = [
   tagTypes.why_trust_us,
   tagTypes.brand,
   tagTypes.team,
+  tagTypes.our_work,
+  tagTypes.technology,
+  tagTypes.capabilities,
+  tagTypes.industries,
+  tagTypes.our_product_price,
+  tagTypes.faq_category,
 ];

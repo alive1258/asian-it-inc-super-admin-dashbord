@@ -12,6 +12,7 @@ export default function UpdateImageComponent({
   photURL,
   require,
   width,
+  height,
   label,
 }) {
   const [loading, setLoading] = useState(false);
@@ -80,7 +81,11 @@ export default function UpdateImageComponent({
           *
         </abbr>
       </label>
-      <div className="border-[2px] mt-2 border-dashed border-info-base bg-[#131517] w-full max-w-full flex items-center justify-center h-96">
+      <div
+        className={`border-[2px] mt-2 border-dashed border-info-base bg-[#131517] w-full max-w-full flex items-center justify-center ${
+          height ? height : "h-96 "
+        } `}
+      >
         {image ? (
           <Image // Use standard HTML img to display the uploaded image
             width={1000}
