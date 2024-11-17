@@ -78,6 +78,7 @@ const AllProducts = () => {
     );
   }
 
+  console.log(data?.data?.data?.[3]?.photos,"datadatadatadata")
   return (
     <>
       <section className="md:px-6 px-4 py-7 mt-6 bg-primary-base mx-6 rounded-lg">

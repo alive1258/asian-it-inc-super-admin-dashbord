@@ -104,7 +104,7 @@ export const SidebarItemsData = [
   {
     id: 11,
     name: "Products",
-    path: "",
+    path: "/product",
     Icon: <RiBankFill size={18} />,
     sub: [
       {
@@ -118,12 +118,6 @@ export const SidebarItemsData = [
         name: "Products",
         path: "/products/products",
         Icon: <MdManageAccounts />,
-      },
-      {
-        id: 3,
-        name: "Tertiary Category",
-        path: "/tertiary-categories/all-tertiary-categories",
-        Icon: <MdCoPresent />,
       },
     ],
   },
@@ -146,21 +140,30 @@ export const SidebarItemsData = [
         path: "/faqs/faqs",
         Icon: <MdManageAccounts />,
       },
-      {
-        id: 3,
-        name: "Tertiary Category",
-        path: "/tertiary-categories/all-tertiary-categories",
-        Icon: <MdCoPresent />,
-      },
     ],
   },
 
   {
     id: 13,
-    name: "Units",
-    path: "/units/all-units",
-    Icon: <CiCompass1 size={18} />,
+    name: "Settings",
+    path: "/settings",
+    Icon: <RiBankFill size={18} />,
+    sub: [
+      {
+        id: 1,
+        name: "Terms and conditions",
+        path: "/settings/terms-and-conditions",
+        Icon: <IoPersonAddSharp />,
+      },
+      {
+        id: 2,
+        name: "Products",
+        path: "/products/products",
+        Icon: <MdManageAccounts />,
+      },
+    ],
   },
+
   {
     id: 14,
     name: "Attributes",

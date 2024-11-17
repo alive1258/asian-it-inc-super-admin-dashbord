@@ -16,6 +16,7 @@ export const tagTypes = {
   products: "products",
   product_category: "product_category",
   product_top_category: "product_top_category",
+  terms_and_conditions: "terms_and_conditions",
 };
 
 export const tagTypesList = [
@@ -36,4 +37,5 @@ export const tagTypesList = [
   tagTypes.products,
   tagTypes.product_category,
   tagTypes.product_top_category,
+  tagTypes.terms_and_conditions,
 ];

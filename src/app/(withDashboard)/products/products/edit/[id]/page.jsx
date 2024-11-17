@@ -1,12 +1,12 @@
-import EditProduct from '@/Components/products/products/EditProduct'
-import React from 'react'
+import EditProduct from "@/Components/products/products/EditProduct";
+import React from "react";
 
-const page = () => {
+const page = ({ params }) => {
   return (
     <>
-     <EditProduct/> 
+      <EditProduct id={params?.id} />
     </>
-  )
-}
+  );
+};
 
-export default page
+export default page;
