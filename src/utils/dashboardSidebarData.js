@@ -115,8 +115,8 @@ export const SidebarItemsData = [
       },
       {
         id: 2,
-        name: "Sub Category",
-        path: "/sub-categories/all-sub-categories",
+        name: "Products",
+        path: "/products/products",
         Icon: <MdManageAccounts />,
       },
       {
@@ -142,8 +142,8 @@ export const SidebarItemsData = [
       },
       {
         id: 2,
-        name: "Sub Category",
-        path: "/sub-categories/all-sub-categories",
+        name: "Faqs",
+        path: "/faqs/faqs",
         Icon: <MdManageAccounts />,
       },
       {

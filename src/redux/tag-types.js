@@ -12,6 +12,10 @@ export const tagTypes = {
   industries: "industries",
   our_product_price: "our_product_price",
   faq_category: "faq_category",
+  faqs: "faqs",
+  products: "products",
+  product_category: "product_category",
+  product_top_category: "product_top_category",
 };
 
 export const tagTypesList = [
@@ -28,4 +32,8 @@ export const tagTypesList = [
   tagTypes.industries,
   tagTypes.our_product_price,
   tagTypes.faq_category,
+  tagTypes.faqs,
+  tagTypes.products,
+  tagTypes.product_category,
+  tagTypes.product_top_category,
 ];

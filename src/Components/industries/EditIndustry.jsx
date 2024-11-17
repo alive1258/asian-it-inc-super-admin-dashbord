@@ -26,7 +26,7 @@ const EditIndustry = ({ id }) => {
       const res = await updateIndustries({ id, data }).unwrap();
       if (res?.success) {
         reset();
-        showSuccessAlert("success", "Industry update successfully!");
+        showSuccessAlert("success", "faqs category update successfully!");
       } else {
         toast.error(res.message, { position: toast.TOP_RIGHT });
       }
@@ -50,7 +50,7 @@ const EditIndustry = ({ id }) => {
           Update industry
         </h1>
         <div className="flex items-center text-[16px] py-1">
-          <Link href="/capabilities">
+          <Link href="/faqs/faqs-category">
             <span className="text-secondary-base font-medium">industry</span>
           </Link>
           <MdKeyboardArrowRight />
