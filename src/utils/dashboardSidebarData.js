@@ -157,8 +157,8 @@ export const SidebarItemsData = [
       },
       {
         id: 2,
-        name: "Products",
-        path: "/products/products",
+        name: "Privacy And policy",
+        path: "/settings/privacy-policy",
         Icon: <MdManageAccounts />,
       },
     ],
@@ -166,20 +166,35 @@ export const SidebarItemsData = [
 
   {
     id: 14,
-    name: "Attributes",
-    path: "/attributes/all-attributes",
-    Icon: <GiVerticalBanner size={18} />,
+    name: "Banners",
+    path: "/banners",
+    Icon: <RiBankFill size={18} />,
+    sub: [
+      {
+        id: 1,
+        name: "Home Page Banners",
+        path: "/banners/home-banners",
+        Icon: <IoPersonAddSharp />,
+      },
+      {
+        id: 2,
+        name: "Others Page banners",
+        path: "/banners/others-page-banner",
+        Icon: <MdManageAccounts />,
+      },
+    ],
   },
+
   {
     id: 15,
-    name: "Stock Types",
-    path: "/stock-types/all-stock-types",
+    name: "Testimonial",
+    path: "/testimonial",
     Icon: <SiJetpackcompose size={18} />,
   },
   {
     id: 16,
-    name: "Suppliers",
-    path: "/suppliers/all-suppliers",
+    name: "About",
+    path: "/about",
     Icon: <FaFeather size={18} />,
   },
   {

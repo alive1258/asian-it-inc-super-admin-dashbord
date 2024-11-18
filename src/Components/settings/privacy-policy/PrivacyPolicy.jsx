@@ -1,6 +1,5 @@
 "use client";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { MdKeyboardArrowRight } from "react-icons/md";
@@ -8,12 +7,10 @@ import { toast } from "react-toastify";
 import Input from "@/Components/UI/Forms/Input";
 import { showSuccessAlert } from "@/Components/notification/Notification";
 import TextEditor from "@/Components/Shared/text-editer/TextEditor";
-import {
-  useCreateOrUpdateTermsAndConditionMutation,
-  useGetTermsAndConditionsQuery,
-} from "@/redux/api/termsAndConditionApi";
+import { useCreateOrUpdatePrivacyPolicyMutation, useGetPrivacyPolicyQuery } from "@/redux/api/privacyPolicyApi";
 
-const TermsAndConditions = () => {
+
+const PrivacyPolicy = () => {
   const {
     register,
     formState: { errors },
@@ -21,9 +18,9 @@ const TermsAndConditions = () => {
     setValue,
   } = useForm();
   const [description, setDescription] = useState("");
-  const [createOrUpdateTermsAndCondition, { isLoading }] =
-    useCreateOrUpdateTermsAndConditionMutation();
-  const { data } = useGetTermsAndConditionsQuery();
+  const [createOrUpdatePrivacyPolicy, { isLoading }] =
+    useCreateOrUpdatePrivacyPolicyMutation();
+  const { data } = useGetPrivacyPolicyQuery();
   const onSubmit = async (formData) => {
     try {
       if (!description) {
@@ -31,11 +28,11 @@ const TermsAndConditions = () => {
         return;
       }
       const data = { ...formData, description: description };
-      const res = await createOrUpdateTermsAndCondition(data).unwrap();
+      const res = await createOrUpdatePrivacyPolicy(data).unwrap();
       if (res?.success) {
         showSuccessAlert(
           "success",
-          "term and condition update  or create successfully!"
+          "Privacy And policy update  or create successfully!"
         );
       } else {
         toast.error(res.message, { position: toast.TOP_RIGHT });
@@ -52,21 +49,21 @@ const TermsAndConditions = () => {
       setDescription(data?.data?.description);
       setValue("name", data?.data?.name);
     }
-  }, [data,setValue]);
+  }, [data, setValue]);
   return (
     <>
       <section className="md:px-6 px-4 py-7 mt-6 bg-primary-base mx-6 rounded-lg">
         <h1 className="font-semibold text-[22px] text-white">
-          Terms And condition
+          Privacy And policy
         </h1>
         <div className="flex items-center text-[16px] py-1">
           <Link href="/terms-and-conditions">
             <span className="text-secondary-base font-medium">
-              Terms And condition
+              Privacy And policy
             </span>
           </Link>
           <MdKeyboardArrowRight />
-          <span> Terms And condition</span>
+          <span> Privacy And policy</span>
         </div>
 
         <div className="bg-primary-base rounded-lg">
@@ -102,4 +99,4 @@ const TermsAndConditions = () => {
   );
 };
 
-export default TermsAndConditions;
+export default PrivacyPolicy;

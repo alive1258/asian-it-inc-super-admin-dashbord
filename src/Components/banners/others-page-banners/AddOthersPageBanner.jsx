@@ -1,42 +1,38 @@
 "use client";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { MdKeyboardArrowRight } from "react-icons/md";
 import { toast } from "react-toastify";
+import { useCreateHeroBannerMutation } from "@/redux/api/othersPageBannersApi";
+import UploadImageComponent from "@/Components/UI/Forms/UploadImageComponent";
 import Input from "@/Components/UI/Forms/Input";
 import { showSuccessAlert } from "@/Components/notification/Notification";
-import TextEditor from "@/Components/Shared/text-editer/TextEditor";
-import {
-  useCreateOrUpdateTermsAndConditionMutation,
-  useGetTermsAndConditionsQuery,
-} from "@/redux/api/termsAndConditionApi";
 
-const TermsAndConditions = () => {
+const AddOthersPageBanner = () => {
   const {
     register,
     formState: { errors },
     handleSubmit,
-    setValue,
+    reset,
   } = useForm();
-  const [description, setDescription] = useState("");
-  const [createOrUpdateTermsAndCondition, { isLoading }] =
-    useCreateOrUpdateTermsAndConditionMutation();
-  const { data } = useGetTermsAndConditionsQuery();
-  const onSubmit = async (formData) => {
+  const router = useRouter();
+  const [createHeroBanner, { isLoading }] = useCreateHeroBannerMutation();
+  const [photo, setPhoto] = useState("");
+
+  const onSubmit = async (data) => {
     try {
-      if (!description) {
-        toast.error("Please enter descriptions", { position: toast.TOP_RIGHT });
+      if (!photo) {
+        showErrorAlert("error", "Please enter a photo");
         return;
       }
-      const data = { ...formData, description: description };
-      const res = await createOrUpdateTermsAndCondition(data).unwrap();
+      const formData = { ...data, photo };
+      const res = await createHeroBanner(formData).unwrap();
       if (res?.success) {
-        showSuccessAlert(
-          "success",
-          "term and condition update  or create successfully!"
-        );
+        reset();
+        router.back();
+        showSuccessAlert("success", "Create other page banner successfully!");
       } else {
         toast.error(res.message, { position: toast.TOP_RIGHT });
       }
@@ -46,47 +42,53 @@ const TermsAndConditions = () => {
       });
     }
   };
-
-  useEffect(() => {
-    if (data?.data) {
-      setDescription(data?.data?.description);
-      setValue("name", data?.data?.name);
-    }
-  }, [data,setValue]);
   return (
     <>
       <section className="md:px-6 px-4 py-7 mt-6 bg-primary-base mx-6 rounded-lg">
         <h1 className="font-semibold text-[22px] text-white">
-          Terms And condition
+          Add Other page banner
         </h1>
         <div className="flex items-center text-[16px] py-1">
-          <Link href="/terms-and-conditions">
-            <span className="text-secondary-base font-medium">
-              Terms And condition
-            </span>
+          <Link href="/">
+            <span className="text-secondary-base font-medium">Home</span>
           </Link>
           <MdKeyboardArrowRight />
-          <span> Terms And condition</span>
+          <span>Add Other page banner</span>
         </div>
 
         <div className="bg-primary-base rounded-lg">
           <form onSubmit={handleSubmit(onSubmit)} className="mt-6">
-            <div className="items-start  space-y-1">
-              {/* name  */}
+            <div className="items-start">
+              {/* Select Company  */}
+
+              {/* mrp  */}
               <Input
                 placeholder="Enter name"
                 text="name"
                 label="Name "
+                require={true}
                 register={register}
                 errors={errors}
               />
+
+              <Input
+                placeholder="Enter link... "
+                text="link"
+                require={true}
+                label="Page  link end point "
+                register={register}
+                errors={errors}
+              />
+
               <div>
-                <p className="text-[16px] text-white">
-                  Description{" "}
-                  <abbr className={`pl-1  text-lg text-[#FF4234]`}>*</abbr>{" "}
-                </p>
+                <UploadImageComponent
+                  label={"Technology Photo"}
+                  require={true}
+                  setPhotoURL={setPhoto}
+                  photURL={photo}
+                />
               </div>
-              <TextEditor content={description} setContent={setDescription} />
+              {/* selling_discount  */}
             </div>
 
             {/* bottom  */}
@@ -102,4 +104,4 @@ const TermsAndConditions = () => {
   );
 };
 
-export default TermsAndConditions;
+export default AddOthersPageBanner;

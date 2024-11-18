@@ -17,6 +17,11 @@ export const tagTypes = {
   product_category: "product_category",
   product_top_category: "product_top_category",
   terms_and_conditions: "terms_and_conditions",
+  privacy_policy: "privacy_policy",
+  hero_banner: "hero_banner",
+  banners: "banners",
+  testimonial: "testimonial",
+  about: "about",
 };
 
 export const tagTypesList = [
@@ -38,4 +43,9 @@ export const tagTypesList = [
   tagTypes.product_category,
   tagTypes.product_top_category,
   tagTypes.terms_and_conditions,
+  tagTypes.privacy_policy,
+  tagTypes.hero_banner,
+  tagTypes.banners,
+  tagTypes.testimonial,
+  tagTypes.about,
 ];
