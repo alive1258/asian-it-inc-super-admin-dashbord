@@ -22,6 +22,8 @@ export const tagTypes = {
   banners: "banners",
   testimonial: "testimonial",
   about: "about",
+  blog_category: "blog_category",
+  blogs: "blogs",
 };
 
 export const tagTypesList = [
@@ -48,4 +50,6 @@ export const tagTypesList = [
   tagTypes.banners,
   tagTypes.testimonial,
   tagTypes.about,
+  tagTypes.blog_category,
+  tagTypes.blogs,
 ];

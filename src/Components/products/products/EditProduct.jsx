@@ -256,7 +256,7 @@ const EditProduct = ({ id }) => {
             Add Photo
           </button>
         </div>
-
+ 
         {/* Submit Button */}
         <div className="mt-3">
           <button

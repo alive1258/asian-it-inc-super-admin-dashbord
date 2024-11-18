@@ -21,7 +21,6 @@ export const updateImage = async ({ currentImage, oldImage }) => {
           },
         }
       );
-
       // Validate that the response contains the expected data
       const photo = res?.data?.name;
       if (!photo) {

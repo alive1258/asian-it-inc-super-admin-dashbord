@@ -119,6 +119,12 @@ export const SidebarItemsData = [
         path: "/products/products",
         Icon: <MdManageAccounts />,
       },
+      {
+        id: 2,
+        name: "Product top category",
+        path: "/products/product-top-category",
+        Icon: <MdManageAccounts />,
+      },
     ],
   },
 
@@ -199,10 +205,25 @@ export const SidebarItemsData = [
   },
   {
     id: 17,
-    name: "Discount Types",
-    path: "/discount-types/all-discount-types",
-    Icon: <MdDiscount size={18} />,
+    name: "Blogs",
+    path: "/Blogs",
+    Icon: <RiBankFill size={18} />,
+    sub: [
+      {
+        id: 1,
+        name: "Blogs Categories",
+        path: "/blogs/blogs-category",
+        Icon: <IoPersonAddSharp />,
+      },
+      {
+        id: 2,
+        name: "Blogs",
+        path: "/blogs/blogs",
+        Icon: <MdManageAccounts />,
+      },
+    ],
   },
+
   {
     id: 18,
     name: "Payment Methods",

@@ -12,6 +12,8 @@ import {
   useCreateOrUpdateAboutMutation,
   useGetAboutQuery,
 } from "@/redux/api/aboutApi";
+import { showSuccessAlert } from "../notification/Notification";
+import UploadImageComponent from "../UI/Forms/UploadImageComponent";
 
 const About = () => {
   const {
@@ -21,7 +23,9 @@ const About = () => {
     setValue,
   } = useForm();
   const [photo, setPhoto] = useState("");
+  const [photos, setPhotos] = useState([]);
   const [worldWidePhoto, setWorldWidePhoto] = useState("");
+  const [currentPhotos, setCurrentPhotos] = useState([]);
   const [supportPhoto, setSupportPhoto] = useState("");
   const [easyToReachPhoto, setEasyToReachPhoto] = useState("");
   const [firstOnFieldPhoto, setFirstOnFieldPhoto] = useState("");
@@ -31,10 +35,21 @@ const About = () => {
   const onSubmit = async (formData) => {
     try {
       if (!photo) {
-        toast.error("Please enter descriptions", { position: toast.TOP_RIGHT });
+        toast.error("Please enter service photo", {
+          position: toast.TOP_RIGHT,
+        });
         return;
       }
-      const data = { ...formData, bg_photo: photo };
+      const newPhotosData = [...photos, ...currentPhotos].join(",");
+      const data = {
+        ...formData,
+        service_photo: photo,
+        photos: newPhotosData,
+        worldwide_services_photo: worldWidePhoto,
+        support_photo: supportPhoto,
+        easy_to_reach_photo: easyToReachPhoto,
+        first_on_field_photo: firstOnFieldPhoto,
+      };
       const res = await createOrUpdateAbout(data).unwrap();
       if (res?.success) {
         showSuccessAlert("success", "About update  or create successfully!");
@@ -46,6 +61,19 @@ const About = () => {
         position: toast.TOP_RIGHT,
       });
     }
+  };
+
+  const addPhotoField = () => setCurrentPhotos((prev) => [...prev, ""]);
+
+  const removePhotoField = (index) =>
+    setCurrentPhotos((prev) => prev.filter((_, i) => i !== index));
+  const removeStorePhotoField = (index) =>
+    setPhotos((prev) => prev.filter((_, i) => i !== index));
+
+  const updatePhotoField = (index, newPhotoURL) => {
+    setCurrentPhotos((prev) =>
+      prev.map((photo, i) => (i === index ? newPhotoURL : photo))
+    );
   };
 
   useEffect(() => {
@@ -64,10 +92,17 @@ const About = () => {
       setValue("team_member", data?.data?.team_member);
       setValue("video_url", data?.data?.video_url);
       setValue("team_member", data?.data?.team_member);
-      setValue("photos", data?.data?.photos);
+
+      if (!photos.length && data?.data?.photos) {
+        // Split the string into an array and remove duplicates
+        const photoArray = data?.data?.photos.split(",");
+        setPhotos(photoArray);
+      }
+
       if (!photo && data?.data?.service_photo) {
         setPhoto(data?.data?.service_photo);
       }
+
       if (!worldWidePhoto && data?.data?.worldwide_services_photo) {
         setWorldWidePhoto(data?.data?.worldwide_services_photo);
       }
@@ -83,6 +118,7 @@ const About = () => {
       }
     }
   }, [data, setValue, photo]);
+
   return (
     <>
       <section className="md:px-6 px-4 py-7 mt-6 bg-primary-base mx-6 rounded-lg">
@@ -267,6 +303,59 @@ const About = () => {
                   setPhotoURL={setPhoto}
                   photURL={photo}
                 />
+              </div>
+
+              <p>About slider photo</p>
+
+              {/* Multiple Photo Uploads */}
+              <div className="mb-4">
+                {photos.map((item, index) => (
+                  <div key={index} className="space-y-2 mt-2">
+                    <UpdateImageComponent
+                      width={"w-[450px]"}
+                      label={`Photos  ${index + 1} `}
+                      require={true}
+                      setPhotoURL={setPhoto}
+                      photURL={item}
+                    />
+                    <button
+                      type="button"
+                      onClick={() => removeStorePhotoField(index)}
+                      className=" text-danger-base"
+                    >
+                      Remove
+                    </button>
+                  </div>
+                ))}
+              </div>
+
+              {/* Multiple Photo Uploads */}
+              <div>
+                {/* <p className="text-sm text-white pb-2 ">Photos</p> */}
+                {currentPhotos?.map((item, index) => (
+                  <div key={index} className="space-y-2 mb-2 relative">
+                    <UploadImageComponent
+                      width={"w-[450px]"}
+                      label={`Photo ${index + 1}`}
+                      photURL={item}
+                      setPhotoURL={(url) => updatePhotoField(index, url)}
+                    />
+                    <button
+                      type="button"
+                      onClick={() => removePhotoField(index)}
+                      className=" text-danger-base"
+                    >
+                      Remove
+                    </button>
+                  </div>
+                ))}
+                <button
+                  type="button"
+                  onClick={addPhotoField}
+                  className="text-sm px-2 rounded py-1 mt-2 bg-blue-base"
+                >
+                  Add Photo
+                </button>
               </div>
             </div>
 

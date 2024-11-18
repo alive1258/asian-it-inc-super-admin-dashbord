@@ -6,7 +6,10 @@ import { MdKeyboardArrowRight } from "react-icons/md";
 import { toast } from "react-toastify";
 import { showErrorAlert, showSuccessAlert } from "../notification/Notification";
 import UpdateImageComponent from "../UI/Forms/UpdateImageComponent";
-import { useGetSingleCapabilitiesQuery, useUpdateCapabilitiesMutation } from "@/redux/api/capabilitiesApi";
+import {
+  useGetSingleCapabilitiesQuery,
+  useUpdateCapabilitiesMutation,
+} from "@/redux/api/capabilitiesApi";
 import Textarea from "../UI/Forms/Textarea";
 
 const EditCapability = ({ id }) => {
@@ -70,7 +73,7 @@ const EditCapability = ({ id }) => {
           <form onSubmit={handleSubmit(onSubmit)} className="mt-6">
             <div className="items-start">
               {/* name  */}
-                <Textarea
+              <Textarea
                 placeholder="Description here..."
                 text="name"
                 label="Description "
@@ -81,7 +84,7 @@ const EditCapability = ({ id }) => {
                 <UpdateImageComponent
                   width={"w-[200px]"}
                   height={"h-[200px]"}
-                  label={"technology Photo"}
+                  label={"Capability Photo"}
                   require={true}
                   setPhotoURL={setPhoto}
                   photURL={photo}
@@ -103,4 +106,4 @@ const EditCapability = ({ id }) => {
   );
 };
 
-export default EditCapability
+export default EditCapability;

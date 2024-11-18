@@ -76,7 +76,7 @@ const AddCapability = () => {
                   photURL={photo}
                 />
               </div>
-              {/* selling_discount  */}
+      
             </div>
 
             {/* bottom  */}
