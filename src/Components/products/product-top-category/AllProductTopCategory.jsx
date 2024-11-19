@@ -83,7 +83,7 @@ const AllProductTopCategory = () => {
       <section className="md:px-6 px-4 py-7 mt-6 bg-primary-base mx-6 rounded-lg">
         {/* Header section with title and search bar */}
         <div className="flex justify-between items-center">
-          <h1 className="text-2xl font-semibold">All product top category</h1>
+          <h1 className="text-2xl font-semibold">All Product top category</h1>
           <div className="flex items-center space-x-4">
             {/* Search input with icon */}
             <div className="relative w-full max-w-xs">
@@ -147,7 +147,7 @@ const AllProductTopCategory = () => {
 
                       <td className="my-2 px-4 text-end rounded-r-xl">
                         <div className="flex items-center justify-end w-full gap-4">
-                          <Link href={`/faqs/faqs/edit/${item?.id}`}>
+                          <Link href={`/products/product-top-category/edit/${item?.id}`}>
                             <LiaEditSolid className="text-info-base text-2xl" />
                           </Link>
                           <button onClick={() => handleDeleteProduct(item)}>

@@ -120,9 +120,15 @@ export const SidebarItemsData = [
         Icon: <MdManageAccounts />,
       },
       {
-        id: 2,
+        id: 3,
         name: "Product top category",
         path: "/products/product-top-category",
+        Icon: <MdManageAccounts />,
+      },
+      {
+        id: 4,
+        name: "Assigned technology",
+        path: "/products/assigned-technology",
         Icon: <MdManageAccounts />,
       },
     ],

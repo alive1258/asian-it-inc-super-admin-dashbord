@@ -29,7 +29,6 @@ export const axiosBaseQuery =
       });
 
       // Ensure to return only the data property
-
       return { data: result.data };
     } catch (axiosError) {
       // console.log("axiosError", axiosError);
@@ -45,6 +44,7 @@ export const axiosBaseQuery =
       // };
 
       const { response } = axiosError;
+  
       return {
         error: {
           // Use status code from response or default to 500

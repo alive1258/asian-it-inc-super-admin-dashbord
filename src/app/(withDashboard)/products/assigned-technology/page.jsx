@@ -1,11 +1,12 @@
-import React from 'react'
+import AllAssignTechnology from "@/Components/products/assign-technology/AllAssignTechnology";
+import React from "react";
 
 const page = () => {
   return (
-    <div>
-      
-    </div>
-  )
-}
+    <>
+      <AllAssignTechnology />
+    </>
+  );
+};
 
-export default page
+export default page;

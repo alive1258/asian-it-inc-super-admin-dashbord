@@ -24,6 +24,7 @@ export const tagTypes = {
   about: "about",
   blog_category: "blog_category",
   blogs: "blogs",
+  assigned_technology: "assigned_technology",
 };
 
 export const tagTypesList = [
@@ -52,4 +53,5 @@ export const tagTypesList = [
   tagTypes.about,
   tagTypes.blog_category,
   tagTypes.blogs,
+  tagTypes.assigned_technology,
 ];

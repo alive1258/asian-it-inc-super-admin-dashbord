@@ -85,6 +85,8 @@ const AddWhyTrustUs = () => {
                 <UploadImageComponent
                   label={"Service Photo"}
                   require={true}
+                  width={"w-[400px]"}
+                  height={"h-[400px]"}
                   setPhotoURL={setPhoto}
                   photURL={photo}
                 />

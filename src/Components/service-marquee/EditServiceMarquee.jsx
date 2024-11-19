@@ -93,6 +93,8 @@ const EditServiceMarquee = ({ id }) => {
                 <UpdateImageComponent
                   label={"Service Photo"}
                   require={true}
+                  width={"w-[200px]"}
+                  height={"h-[200px]"}
                   setPhotoURL={setPhoto}
                   photURL={photo}
                 />

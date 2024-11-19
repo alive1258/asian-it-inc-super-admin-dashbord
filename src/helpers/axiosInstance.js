@@ -48,6 +48,7 @@ instance.interceptors.response.use(
         pendingRequests.push(() => resolve(instance(config)));
       });
     } else {
+        console.log(error?.response, "error?.responseerror?.response")
       // Return a structured error response
       const responseObject = {
         statusCode: error?.response?.status || 500,

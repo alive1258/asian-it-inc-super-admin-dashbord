@@ -1,38 +1,34 @@
 "use client";
-import { truncateCharacters } from "@/utils/descriptionTextCounter";
-import Image from "next/image";
 import Link from "next/link";
 import React, { useState } from "react";
 import { IoSearch } from "react-icons/io5";
 import { LiaEditSolid } from "react-icons/lia";
 import { MdDelete } from "react-icons/md";
-import Pagination from "../Shared/Pagination/Pagination";
-  import moment from "moment";
+import moment from "moment";
 import Swal from "sweetalert2";
-import TableSkeleton from "../Shared/Loading/TableSkeleton";
-import {
-  useDeleteWhTrustUsMutation,
-  useGetAllWhTrustUsQuery,
-} from "@/redux/api/whyTrustUsApi";
+import TableSkeleton from "@/Components/Shared/Loading/TableSkeleton";
+import Pagination from "@/Components/Shared/Pagination/Pagination";
+import { truncateCharacters } from "@/utils/descriptionTextCounter";
+import { useDeleteAssignTechnologyMutation, useGetAllAssignTechnologyQuery } from "@/redux/api/assignTechnologyApi";
 
-const AllWhyTrustUs = () => {
+const AllAssignTechnology = () => {
   const [searchValue, setSearchValue] = useState({
     limit: 10,
     page: 1,
     search: "",
   });
-  const { data, isLoading, error } = useGetAllWhTrustUsQuery(searchValue);
-  const [deleteWhTrustUs] = useDeleteWhTrustUsMutation();
+  const { data, isLoading, error } = useGetAllAssignTechnologyQuery(searchValue);
+  const [deleteAssignTechnology] = useDeleteAssignTechnologyMutation();
 
   const handleSearchChange = (e) => {
     setSearchValue({ ...searchValue, search: e.target.value.toLowerCase() });
   };
 
-  const handleDeleteProduct = async (service) => {
+  const handleDeleteProduct = async (assignTechnology) => {
     try {
       const result = await Swal.fire({
         title: "Are you sure?",
-        text: `Are you sure you want to delete the why  trust us  "${service?.name}"?`,
+        text: `Are you sure you want to delete the assign technology "${assignTechnology?.name}"?`,
         icon: "warning",
         showCancelButton: true,
         confirmButtonColor: "#3085d6",
@@ -40,17 +36,17 @@ const AllWhyTrustUs = () => {
         confirmButtonText: "Yes, delete it!",
       });
       if (result.isConfirmed) {
-        const response = await deleteWhTrustUs(service?.id).unwrap();
+        const response = await deleteAssignTechnology(assignTechnology?.id).unwrap();
         if (response?.success) {
           Swal.fire({
             title: "Deleted!",
-            text: `The  why  trust us  "${service?.name}" has been successfully deleted.`,
+            text: `The  assign technology "${assignTechnology?.name}" has been successfully deleted.`,
             icon: "success",
           });
         } else {
           Swal.fire({
             title: "Error!",
-            text: `${response?.message}`,
+            text: `${response?.data}`,
             icon: "error",
           });
         }
@@ -58,7 +54,7 @@ const AllWhyTrustUs = () => {
     } catch (error) {
       Swal.fire({
         title: "Error!",
-        text: `An error occurred: ${error.data || error.message}`,
+        text: `An error occurred: ${error.data || error.data}`,
         icon: "error",
       });
     }
@@ -83,7 +79,7 @@ const AllWhyTrustUs = () => {
       <section className="md:px-6 px-4 py-7 mt-6 bg-primary-base mx-6 rounded-lg">
         {/* Header section with title and search bar */}
         <div className="flex justify-between items-center">
-          <h1 className="text-2xl font-semibold">All why trust us</h1>
+          <h1 className="text-2xl font-semibold"> All Assign technology</h1>
           <div className="flex items-center space-x-4">
             {/* Search input with icon */}
             <div className="relative w-full max-w-xs">
@@ -96,8 +92,8 @@ const AllWhyTrustUs = () => {
               />
             </div>
             {/* Link to create a new company */}
-            <Link href="/why-trust-us/add-why-trust-us  ">
-              <button className="btn w-56">Create why trust us</button>
+            <Link href="/products/assigned-technology/add-assigned-technology">
+              <button className="btn w-56">Create Assign technology</button>
             </Link>
           </div>
         </div>
@@ -108,11 +104,9 @@ const AllWhyTrustUs = () => {
               <thead>
                 <tr className="bg-primary-base text-start text-[13px] ">
                   <th className="py-4 px-4 text-start rounded-l-xl">ID</th>
-                  <th className="py-4 px-4 text-start">Name</th>
-                  <th className="py-4 px-4 text-start">Image</th>
-                  <th className="py-4 px-4 text-start">Description</th>
+                  <th className="py-4 px-4 text-start">Product name</th>
+                  <th className="py-4 px-4 text-start">Technology name</th>
                   <th className="py-4 px-4 text-start">Date</th>
-
                   <th className="py-4 px-4 text-end rounded-r-xl">Action</th>
                 </tr>
               </thead>
@@ -131,27 +125,15 @@ const AllWhyTrustUs = () => {
 
                       <td className="py-3 px-4 ">
                         <div>
-                          <p>{truncateCharacters(item?.name, 30)}</p>
+                        <p>{truncateCharacters(item?.products?.name, 30)}</p>
                         </div>
                       </td>
                       <td className="py-3 px-4 ">
                         <div>
-                          <Image
-                            className="w-[200px] h-[100px] object-cover"
-                            width={200}
-                            height={100}
-                            src={
-                              process.env.NEXT_PUBLIC_IMAGE_URL + item?.photo
-                            }
-                            alt="service"
-                          />
+                          <p> {item?.technologies?.name}</p>
                         </div>
                       </td>
-                      <td className="py-3 px-4">
-                        <div>
-                          <p>{truncateCharacters(item?.description, 30)}</p>
-                        </div>
-                      </td>
+
                       <td className="py-3 px-4">
                         <p className="text-black dark:text-white text-[14px] w-[180px]">
                           {moment(item?.created_at).format(
@@ -162,7 +144,7 @@ const AllWhyTrustUs = () => {
 
                       <td className="my-2 px-4 text-end rounded-r-xl">
                         <div className="flex items-center justify-end w-full gap-4">
-                          <Link href={`/why-trust-us/edit/${item?.id}`}>
+                          <Link href={`/products/assigned-technology/edit/${item?.id}`}>
                             <LiaEditSolid className="text-info-base text-2xl" />
                           </Link>
                           <button onClick={() => handleDeleteProduct(item)}>
@@ -198,4 +180,5 @@ const AllWhyTrustUs = () => {
   );
 };
 
-export default AllWhyTrustUs;
+
+export default AllAssignTechnology
