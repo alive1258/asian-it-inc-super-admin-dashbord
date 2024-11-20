@@ -1,10 +1,10 @@
-import AllFaqsCategory from '@/Components/faqs/faqs-category/AllFaqsCategory'
+import AllOurProductPrice from '@/Components/products/our-product-price/AllOurProductPrice'
 import React from 'react'
 
 const page = () => {
   return (
     <>
-     <AllFaqsCategory/> 
+     <AllOurProductPrice/> 
     </>
   )
 }

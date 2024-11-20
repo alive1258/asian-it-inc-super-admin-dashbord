@@ -191,7 +191,7 @@ export const SidebarItemsData = [
       {
         id: 2,
         name: "Others Page banners",
-        path: "/banners/others-page-banner",
+        path: "/banners/others-page-banners",
         Icon: <MdManageAccounts />,
       },
     ],
