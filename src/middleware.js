@@ -5,7 +5,6 @@ import { AUTH_KEY } from "./constants/keys";
 export async function middleware(request) {
   const adminAccessToken = request.cookies.get(AUTH_KEY)?.value;
   const pathname = request.nextUrl.pathname;
-
   // Redirect users without access tokens away from the home page ("/")
   if (pathname === "/" && !adminAccessToken) {
     return NextResponse.redirect(new URL("/signin", request.url));

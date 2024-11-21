@@ -51,10 +51,11 @@ const AddProduct = () => {
         showErrorAlert("error", "Please enter a photo");
         return;
       }
+      const newPhotos = [...photos].join(",");
       const payload = {
         ...data,
         photo,
-        photos, // Include photos array
+        photos: newPhotos, // Include photos array
         problems,
         challenge,
         solutions,
@@ -76,8 +77,6 @@ const AddProduct = () => {
       });
     }
   };
-  
-  
 
   return (
     <>
@@ -127,6 +126,14 @@ const AddProduct = () => {
                 errors={errors}
               />
 
+              <Input
+                placeholder="Enter category..."
+                text="category"
+                required={true}
+                label="Category"
+                register={register}
+                errors={errors}
+              />
               <Input
                 placeholder="Enter Bit title..."
                 text="big_title"
@@ -190,7 +197,6 @@ const AddProduct = () => {
                     <UploadImageComponent
                       label={`Photo ${index + 1}`}
                       photURL={photo}
-                      width={"w-[90%]"}
                       setPhotoURL={(url) => updatePhotoField(index, url)}
                     />
                     <button

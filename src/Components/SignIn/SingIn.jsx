@@ -4,15 +4,12 @@ import { useForm } from "react-hook-form";
 import Input from "../UI/Forms/Input";
 import Link from "next/link";
 import { useSignInMutation } from "@/redux/api/authApi";
-import { storeOTPData } from "@/redux/features/otpSlice";
 import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
-import { useRouter } from "next/navigation";
 import { ImSpinner10 } from "react-icons/im";
 
 const SingIn = () => {
   const dispatch = useDispatch();
-  const router = useRouter();
   const {
     register,
     handleSubmit,
@@ -28,8 +25,7 @@ const SingIn = () => {
 
       if (res?.success) {
         reset();
-        // dispatch(storeOTPData(res?.data));
-        router.push("/");
+        window.location.reload('/');
         toast.success(res?.message || "Singed is successful!", {
           position: toast.TOP_RIGHT,
         });

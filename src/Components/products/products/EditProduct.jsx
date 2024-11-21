@@ -34,15 +34,11 @@ const EditProduct = ({ id }) => {
     formState: { errors },
     handleSubmit,
     setValue,
-    reset,
   } = useForm();
 
   const onSubmit = async (formData) => {
     try {
-      const newPhotosData = [
-        ...photos,
-        ...(currentPhotos?.length ? currentPhotos : []), // Spread only if currentPhotos has elements
-      ];
+      const newPhotosData = [...photos, ...currentPhotos].join(",");
 
       const data = {
         ...formData,
@@ -86,6 +82,7 @@ const EditProduct = ({ id }) => {
       setValue("big_title", data?.data?.big_title);
       setValue("overview", data?.data?.overview);
       setValue("title", data?.data?.title);
+      setValue("category", data?.data?.category);
       setValue("web", data?.data?.web);
       setValue("app", data?.data?.app);
       setValue("product_category_id", data?.data?.product_category_id);
@@ -141,6 +138,24 @@ const EditProduct = ({ id }) => {
           text="title"
           required={true}
           label="Title"
+          register={register}
+          errors={errors}
+        />
+
+        <Input
+          placeholder="Enter category..."
+          text="category"
+          required={true}
+          label="Category"
+          register={register}
+          errors={errors}
+        />
+
+        <Input
+          placeholder="Enter category..."
+          text="category"
+          required={true}
+          label="Category"
           register={register}
           errors={errors}
         />
@@ -256,7 +271,7 @@ const EditProduct = ({ id }) => {
             Add Photo
           </button>
         </div>
- 
+
         {/* Submit Button */}
         <div className="mt-3">
           <button

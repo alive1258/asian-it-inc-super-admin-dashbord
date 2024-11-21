@@ -12,8 +12,8 @@ const poppins = Poppins({
 });
 
 export const metadata = {
-  title: "Sikkhaguru",
-  description: " Education management  website",
+  title: "Asian it inc",
+  description: "Asian it inc admin dashboard",
 };
 
 export default function RootLayout({ children }) {
