@@ -36,6 +36,7 @@ const EditBlog = ({ id }) => {
   const onSubmit = async (data) => {
     try {
       const res = await updateFaqs({ id, data }).unwrap();
+      console.log(res,"resres")
       if (res?.success) {
         refetch();
         showSuccessAlert("success", "blog update successfully!");
@@ -64,7 +65,7 @@ const EditBlog = ({ id }) => {
         setPhoto(data?.data?.photo);
       }
     }
-  }, [data, setValue]);
+  }, [data, setValue,description,photo]);
 
   return (
     <>

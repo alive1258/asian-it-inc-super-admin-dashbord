@@ -58,8 +58,11 @@ const EditProduct = ({ id }) => {
         toast.error(res.message || "Failed to update product.");
       }
     } catch (error) {
-      console.error("Error updating product:", error);
-      toast.error("An error occurred while updating the product.");
+      toast.error(
+        error?.message
+          ? error?.message
+          : "An error occurred while updating the product."
+      );
     }
   };
 
@@ -83,6 +86,9 @@ const EditProduct = ({ id }) => {
       setValue("overview", data?.data?.overview);
       setValue("title", data?.data?.title);
       setValue("category", data?.data?.category);
+      setValue("web", data?.data?.web);
+      setValue("meta_key", data?.data?.meta_key);
+      setValue("meta_data", data?.data?.meta_data);
       setValue("web", data?.data?.web);
       setValue("app", data?.data?.app);
       setValue("product_category_id", data?.data?.product_category_id);
@@ -205,6 +211,23 @@ const EditProduct = ({ id }) => {
           errors={errors}
         />
 
+        <Textarea
+          placeholder="Enter meta key"
+          text="meta_key"
+          label=" Meta key"
+          required={true}
+          register={register}
+          errors={errors}
+        />
+
+        <Textarea
+          placeholder="Enter meta data"
+          text="meta_data"
+          label=" Meta data"
+          required={true}
+          register={register}
+          errors={errors}
+        />
         {/* Problems */}
         <div className="mb-4">
           <label className="block text-white mb-2">Problems (optional)</label>

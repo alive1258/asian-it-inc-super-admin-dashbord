@@ -60,6 +60,7 @@ const AddProduct = () => {
         challenge,
         solutions,
       };
+      console.log(payload,'payloadpayloadpayloadpayload')
 
       const res = await createProduct(payload).unwrap();
       if (res?.success) {
@@ -169,6 +170,24 @@ const AddProduct = () => {
                 placeholder="Enter product overview"
                 text="overview"
                 label="Product overview"
+                required={true}
+                register={register}
+                errors={errors}
+              />
+
+              <Textarea
+                placeholder="Enter meta key"
+                text="meta_key"
+                label="Meta key"
+                required={true}
+                register={register}
+                errors={errors}
+              />
+
+              <Textarea
+                placeholder="Enter meta data"
+                text="meta_data"
+                label="Meta data"
                 required={true}
                 register={register}
                 errors={errors}
