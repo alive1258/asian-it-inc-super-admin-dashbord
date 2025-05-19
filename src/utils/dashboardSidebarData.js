@@ -1,11 +1,5 @@
-import { AiOutlineStock } from "react-icons/ai";
-import {
-  MdAccountBalanceWallet,
-  MdManageHistory,
-  MdOutlineDonutSmall,
-} from "react-icons/md";
-import { CgShutterstock } from "react-icons/cg";
-import { FaProductHunt } from "react-icons/fa";
+import { MdAccountBalanceWallet, MdOutlineDonutSmall } from "react-icons/md";
+
 import { CiBasketball } from "react-icons/ci";
 import { FaServicestack, FaUsers } from "react-icons/fa6";
 import { MdOutlineCategory } from "react-icons/md";
@@ -228,5 +222,5 @@ export const SidebarItemsData = [
         Icon: <MdManageAccounts />,
       },
     ],
-  }
+  },
 ];
